@@ -31,5 +31,21 @@
             
         }
     }
+    button{
+        padding:10px 20px;
+        background-color: rgba(230,74,105,0.553);
+        color:white;
+        border:none;
+        border: radius 5px;
+        cursor: pointer;
+        gap:10px;
+
+        &.logout{
+            padding:10px;
+            background-color:#1a73e8;
+        }
+
+    }
+
 
 }

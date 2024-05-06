@@ -30,6 +30,22 @@
             height:20px;
         }
     }
+    button{
+        padding:10px 20px;
+        background-color: rgba(230,74,105,0.553);
+        color:white;
+        border:none;
+        border: radius 5px;
+        cursor: pointer;
+        gap:10px;
+
+        &:hover{
+            background-color: rgba(220,20,60,0.796);
+
+        }
+
+    }
+
 
 
     }
@@ -86,10 +102,10 @@
         margin-top: auto;
         input{
             flex:1;
-            background-color: #dddddd35;
+            background-color: rgba(155, 148, 164, 0.5);
             border:none;
             outline:none;
-            color:white;
+            color:black;
             padding:20px;
             border-radius:10px;
             font-size: 16px;
@@ -105,7 +121,7 @@
             background-color: #5183fe;
             color: white;
             padding: 10px 20px;
-            border:none;
+            border: 7px;
             border-radius: 5px;
             cursor: pointer;
 

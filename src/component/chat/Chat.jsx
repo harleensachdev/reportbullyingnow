@@ -5,18 +5,20 @@ import {
     doc,
     onSnapshot,
     arrayUnion,
-    updateDoc
+    updateDoc,
+    arrayRemove,
 } from "firebase/firestore";
-import {db} from "../../lib/firebase";
+import {auth,db} from "../../lib/firebase";
 import {useChatStore} from "../../lib/chatStore";
 import { useUserStore } from "../../lib/userStore";
+
 
 const Chat = () => {
     const [chat, setChat] = useState();
     const [open, setOpen] = useState(false);
     const [text, setText] = useState("");
     const {currentUser} = useUserStore();
-    const {chatId, user,isCurrentUserBlocked, isRecieverBlocked} = useChatStore();
+    const {chatId, user,isCurrentUserBlocked, isRecieverBlocked, changeBlock} = useChatStore();
 
     const endRef = useRef(null)
     useEffect(()=>{
@@ -70,8 +72,26 @@ const Chat = () => {
         } catch(err) {
             console.log(err);
         }
-        
+
     };
+            
+    const handleBlock = async() =>{
+        if (!user) return;
+        const userDocRef = doc(db, "users", currentUser.id)
+
+        try{
+            await updateDoc(userDocRef,{
+                blocked: isRecieverBlocked? arrayRemove(user.id): arrayUnion(user.id),
+
+            });
+            changeBlock()
+        } catch(err){
+            console.log(err)
+        }
+    }
+    
+        
+    
 
     console.log(text)
     return (
@@ -81,6 +101,9 @@ const Chat = () => {
                 <img src = "./avatar.png" alt ="" />
                 <div className= 'texts'>
                     <span>{user?.username}</span>
+                </div>
+                <div>
+                <button onClick = {handleBlock}>{ isCurrentUserBlocked ? "You are Blocked" : isRecieverBlocked ? "User Blocked" : "Block User"}</button>
                 </div>
                 </div>
             </div>

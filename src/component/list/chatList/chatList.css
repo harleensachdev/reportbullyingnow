@@ -9,20 +9,23 @@
 
         .searchBar{
             flex:1;
-            background-color: rgba(17,25,40,0.5);
+            background-color:rgba(166, 155, 177, 0.5);
             display: flex;
             align-items: center;
             gap: 20px;
             border-radius: 10px;
+            
+            
 
             input{
                 background-color: transparent;
                 border: none;
                 outline: none;
-                color: white;
+                color: black;
                 flex: 1
 
             }
+
             img{
                 width: 20px;
                 height: 20px;
@@ -31,7 +34,7 @@
         .add{
             width: 36px;
             height: 36px;
-            background-color: rgba(17,25,40,0.5);
+            background-color: rgba(155, 148, 164, 0.5);
             padding: 10px;
             border-radius: 20px;
             cursor: pointer;
@@ -42,7 +45,7 @@
         align-items: center;
         gap: 20px;
         padding: 20px;
-        border-bottom: 1px solid #dddddd35
+        border-bottom: 1px solid #ffffff
     }
 
     img{

@@ -9,6 +9,7 @@ import {useChatStore} from "../../../lib/chatStore";
 const ChatList = () => {
     const [chats,setChats] = useState([]);
     const [addMode, setAddMode] = useState(false);
+    const[input, setInput] = useState("");
     const {currentUser} = useUserStore();
     const { changeChat, chatId} = useChatStore();
     console.log(chatId)
@@ -59,10 +60,12 @@ const ChatList = () => {
 
             } catch(err){
                 console.log(err)
-            }
+        }
 
-        };
-    
+    };
+    const filteredChats = chats.filter((c) => 
+        c.user.username.toLowerCase().includes(input.toLowerCase())
+    );
 
         
     
@@ -71,7 +74,7 @@ const ChatList = () => {
             <div className = 'search'>
                 <div className = "searchBar">
                     <img src= "/search.png" alt = "" />
-                    <input type = "text" placeholder = "Press the plus button and search admin to start chatting with an ambassador" />
+                    <input type = "text" placeholder = "Press the plus button and search admin to start chatting with an ambassador" onChange = {(e) => setInput(e.target.value)}/>
                 </div>
                 <img src={addMode ? "./minus.png": "./plus.png"}
                 alt = "" 
@@ -79,7 +82,7 @@ const ChatList = () => {
                 onClick={() => setAddMode((prev) => !prev)}
                 />
             </div>
-            {chats.map((chat)=>(
+            {filteredChats.map((chat)=>(
             <div className = "item" key = {chat.chatId} onClick = {()=> handleSelect(chat)}
             style = {{
                 backgroundColor: chat?.isSeen ? "transparent":"#5183fe",
