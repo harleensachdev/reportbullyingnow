@@ -23,8 +23,8 @@
             padding:20px;
             border:none;
             outline:none;
-            background-color: rgba(17,25,40,0.6);
-            color:white;
+            background-color: rgba(177, 178, 181, 0.6);
+            color: black;
             border-radius:5px;
 
         }
@@ -64,6 +64,6 @@
     .seperator{
         height:80%;
         width:5px;
-        background-color: #dddddd35;
+        background-color: #dacbcbad;
     }
 }
