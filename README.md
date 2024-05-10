@@ -1,3 +1,3 @@
-# Lama Dev Chat App Starter template
+# Private Chat App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This hosted website allows students to report cases of bullying to a central admin account. 
