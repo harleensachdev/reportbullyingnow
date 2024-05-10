@@ -90,7 +90,7 @@ const Login = () => {
                     <img src = {"./avatar.png"} alt = ""></img>
                     Anonymous Picture </label>
                 <input type = "text" placeholder = "Username" name = "username"/>
-                <input type = "text" placeholder = "Private Email (not stored)" name = "email"/>
+                <input type = "text" placeholder = "GIS Email (not displayed)" name = "email"/>
                 <input type = "password" placeholder = "Password (6+ characters)" name = "password"/>
                 <button disabled = {loading}>{loading ? "Loading":"Sign Up"}</button>
             </form>
