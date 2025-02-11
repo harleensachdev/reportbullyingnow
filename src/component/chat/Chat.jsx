@@ -24,6 +24,14 @@ const Chat = () => {
 
   const endRef = useRef(null);
 
+  // Check if popup has been shown before
+  useEffect(() => {
+    const hasSeenPopup = localStorage.getItem(`popupShown_${currentUser?.id}`);
+    if (hasSeenPopup === "true") {
+      setIsPopupOpen(false);
+    }
+  }, [currentUser?.id]);
+
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
   }, []);
@@ -91,9 +99,10 @@ const Chat = () => {
 
   const handleTextChange = (e) => {
     const newText = e.target.value;
+    const hasSeenPopup = localStorage.getItem(`popupShown_${currentUser?.id}`);
 
-    // Show popup when user starts typing
-    if (newText.length === 1) {
+    // Show popup only if it hasn't been shown before
+    if (newText.length === 1 && hasSeenPopup !== "true") {
       setIsPopupOpen(true);
     }
 
@@ -102,6 +111,8 @@ const Chat = () => {
 
   const handlePopupClose = () => {
     setIsPopupOpen(false);
+    // Mark popup as shown for this user
+    localStorage.setItem(`popupShown_${currentUser?.id}`, "true");
   };
 
   return (
